@@ -74,8 +74,10 @@ const ListNote = () => {
         <Button onClick={onLoadMore}>loading more</Button>
       </div>
     ) : null;
+
   const Search = () => {
     const [isModalVisible, setIsModalVisible] = useState(false);
+  
     const [query, setQuery] = useState("");
 
     const options = {
@@ -127,7 +129,11 @@ const ListNote = () => {
               <>
                 <List.Item
                   actions={[
-                    <Button type="primary" key="list-loadmore-edit">
+                    <Button
+                      type="primary"
+                      key="list-loadmore-edit"
+                      onClick={showModal}
+                    >
                       edit
                     </Button>,
                     <Button type="primary" key="list-loadmore-more">
@@ -158,10 +164,30 @@ const ListNote = () => {
     );
   };
 
+  const [isModalEditVisible, setIsModalEditVisible] = useState(false);
+
+  const showModalEdit = () => {
+    setIsModalEditVisible(true);
+  };
+
+  const handleOk = () => {
+    setIsModalEditVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalEditVisible(false);
+  };
+
   return (
     <>
+    <Modal
+          title="Basic Modal"
+          visible={isModalEditVisible}
+          onOk={handleOk}
+          onCancel={handleCancel}
+        >12333</Modal>
       <Search />
-
+    
       <FormAdd
         count={count}
         list={list}
@@ -177,7 +203,11 @@ const ListNote = () => {
         renderItem={(item) => (
           <List.Item
             actions={[
-              <Button type="primary" key="list-loadmore-edit">
+              <Button
+                type="primary"
+                key="list-loadmore-edit"
+                onClick={showModalEdit}
+              >
                 edit
               </Button>,
               <Button type="primary" key="list-loadmore-more">
