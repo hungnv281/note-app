@@ -1,12 +1,10 @@
-import breadcrumbNameMap from "./route";
-import { Link, Route, Routes, useLocation } from "react-router-dom";
-import { Breadcrumb } from "antd";
+import { Link, Route, Routes } from "react-router-dom";
 import "../style/Home.css";
 import ListNote from "./ListNote";
 
 const Home = () => {
-  const location = useLocation();
-  const pathSnippets = location.pathname.split("/").filter((i) => i);
+  // const location = useLocation();
+  // const pathSnippets = location.pathname.split("/").filter((i) => i);
   // const extraBreadcrumbItems = pathSnippets.map((_, index) => {
   //   const url = `/${pathSnippets.slice(0, index + 1).join("/")}`;
   //   return (
