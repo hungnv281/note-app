@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import FormAdd from "./FormAdd";
 import Fuse from "fuse.js";
 
-const count = 3;
+const count = 5;
 const fakeDataUrl = `https://randomuser.me/api/?results=${count}&inc=name,gender,email,nat,picture&noinfo`;
 
 const ListNote = () => {
@@ -77,11 +77,11 @@ const ListNote = () => {
 
   const Search = () => {
     const [isModalVisible, setIsModalVisible] = useState(false);
-  
+
     const [query, setQuery] = useState("");
 
     const options = {
-      keys: ["name.last", "name.title", "name.first"],
+      keys: ["name.last"],
       includeScore: true,
     };
 
@@ -115,9 +115,11 @@ const ListNote = () => {
           Search
         </Button>
         <Modal
-          title="Basic Modal"
+          title="Search data"
           visible={isModalVisible}
           onOk={handleOk}
+          cancelText="Cancel"
+          okText="Ok"
           onCancel={handleCancel}
         >
           <List
@@ -180,14 +182,8 @@ const ListNote = () => {
 
   return (
     <>
-    <Modal
-          title="Basic Modal"
-          visible={isModalEditVisible}
-          onOk={handleOk}
-          onCancel={handleCancel}
-        >12333</Modal>
       <Search />
-    
+
       <FormAdd
         count={count}
         list={list}
@@ -215,6 +211,14 @@ const ListNote = () => {
               </Button>,
             ]}
           >
+            <Modal
+              title="Basic Modal"
+              visible={isModalEditVisible}
+              onOk={handleOk}
+              onCancel={handleCancel}
+            >
+              12333
+            </Modal>
             <Skeleton avatar title={false} loading={item.loading} active>
               <List.Item.Meta
                 avatar={<Avatar src={"https://joeschmoe.io/api/v1/random"} />}
