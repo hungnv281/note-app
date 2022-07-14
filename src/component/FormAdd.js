@@ -1,23 +1,10 @@
 import { Button, Form, Input, Modal } from "antd";
+import TextArea from "antd/lib/input/TextArea";
 import React, { useState } from "react";
 
 const CollectionCreateForm = ({ visible, onCreate, onCancel }, props) => {
   const [form] = Form.useForm();
-  //   const showStudentEdit = useCallback(
-  //     (record) => {
-  //       console.log(record.key, "   record   ", record);
-  //       form.setFieldsValue({
-  //         // key: record.key,
-  //         name: record.name,
-  //         age: record.age,
-  //         address: record.address,
-  //         description: record.description,
-  //         email: record.email,
-  //         gender: record.gender,
-  //       });
-  //     },
-  //     [form]
-  //   );
+
   return (
     <Modal
       visible={visible}
@@ -45,22 +32,21 @@ const CollectionCreateForm = ({ visible, onCreate, onCancel }, props) => {
           modifier: "public",
         }}
       >
-        {/* <Form.List name="name"> */}
             <Form.Item
               name="title"
               label="title"
               rules={[
                 {
                   required: true,
-                  message: "Please input the name of collection!",
+                  message: "Please input the title of collection!",
                 },
               ]}
             >
               <Input />
             </Form.Item>
             <Form.Item
-              name="first"
-              label="first name"
+              name="name"
+              label="name"
               rules={[
                 {
                   required: true,
@@ -71,42 +57,18 @@ const CollectionCreateForm = ({ visible, onCreate, onCancel }, props) => {
               <Input />
             </Form.Item>
             <Form.Item
-              name="last"
-              label="last name"
+              name="content"
+              label="content"
               rules={[
                 {
                   required: true,
-                  message: "Please input the name of collection!",
+                  message: "Please input the content of collection!",
                 },
               ]}
             >
-              <Input />
+              <TextArea />
             </Form.Item>
-        {/* </Form.List> */}
-        <Form.Item
-          name="gender"
-          label="gender"
-          rules={[
-            {
-              required: true,
-              message: "Please input the gender of collection!",
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
-        <Form.Item
-          name="email"
-          label="email"
-          rules={[
-            {
-              required: true,
-              message: "Please input the email of collection!",
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
+        
       </Form>
     </Modal>
   );
@@ -117,7 +79,6 @@ const FormAdd = (props) => {
   const { handleCreate } = props;
 
   const onCreate = (values) => {
-    console.log("Received values of form: ", values);
     setVisible(false);
     handleCreate(values);
   };

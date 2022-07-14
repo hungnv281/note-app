@@ -22,7 +22,7 @@ const Home = () => {
         <Link to="/ListNote">List item</Link>
       </div>
       <Routes>
-        <Route
+        {/* <Route
           path="/apps"
           element={
             <ul className="app-list">
@@ -37,8 +37,8 @@ const Home = () => {
               </li>
             </ul>
           }
-        />
-        <Route path="*" element={<span>Home Page</span>} />
+        /> */}
+        {/* <Route path="*" element={<span>Home Page</span>} /> */}
         <Route
           path="/ListNote"
           element={
